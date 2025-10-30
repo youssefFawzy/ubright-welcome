@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ubright Marketing Agency</title>
+    <!-- Import Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- External stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-p8f8UeO5xqSdN0nGkCzvtF4yMSKAGZUxTV2K1+XEQ5U7gmyJ4doCZTgkgACGchQi0Rz2wBkvH/nCMvhIeMG9jw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- Babel for JSX compilation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Main React App -->
+    <script type="text/babel">
+      const App = () => {
+        const year = new Date().getFullYear();
+        return (
+          <>
+            <header>
+              <div className="logo">
+                <img src="logo.png" alt="Ubright logo" />
+                <h1>Ubright</h1>
+              </div>
+            </header>
+            <main>
+              <div className="hero">
+                <h2>Bright with every step.</h2>
+                <p>
+                  We are a full‑service marketing agency delivering luminous
+                  strategies and innovative solutions to elevate your brand.
+                </p>
+                <button
+                  className="cta-button"
+                  onClick={() =>
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+                  }
+                >
+                  Get Started
+                </button>
+              </div>
+              <section className="details">
+                <div className="detail-card">
+                  <i className="fas fa-bullseye detail-icon" aria-hidden="true"></i>
+                  <div className="detail-content">
+                    <h3>Our Mission</h3>
+                    <p>
+                      At Ubright, we help you shine through tailored marketing
+                      campaigns, analytics‑driven insights, and creative storytelling.
+                    </p>
+                  </div>
+                </div>
+                <div className="detail-card">
+                  <i className="fas fa-phone-alt detail-icon" aria-hidden="true"></i>
+                  <div className="detail-content">
+                    <h3>Contact Us</h3>
+                    <p>
+                      Email: <a href="mailto:info@ubrightagency.com">info@ubrightagency.com</a>
+                      <br />
+                      Phone: <a href="tel:+201234567890">+20 123 456 7890</a>
+                      <br />
+                      Address: Cairo, Egypt
+                    </p>
+                  </div>
+                </div>
+                <div className="detail-card">
+                  <i className="fas fa-user-friends detail-icon" aria-hidden="true"></i>
+                  <div className="detail-content">
+                    <h3>About Us</h3>
+                    <p>
+                      We are a team of passionate marketers, designers, and
+                      strategists dedicated to helping businesses navigate the
+                      digital landscape.
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </main>
+            <footer>© {year} Ubright Marketing Agency. All rights reserved.</footer>
+          </>
+        );
+      };
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
