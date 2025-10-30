@@ -1,4 +1,19 @@
-/* Global styles */
+/*
+  Modern dark theme styles for Ubright Marketing Agency landing page.
+  Colors, typography and layout variables are defined at the top for
+  consistency. Animations rely on AOS (Animate On Scroll) library,
+  imported in index.html, which applies fade, flip and zoom effects.
+*/
+
+:root {
+  --primary: #c93bfc;
+  --secondary: #ef4d00;
+  --background: #0f0f17;
+  --surface: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,12 +22,13 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #0f0f17; /* deep dark background */
-  color: #ffffff;
+  background-color: var(--background);
+  color: var(--text-primary);
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* Gradient background animation */
+/* Animated gradient background using keyframes */
 body::before {
   content: '';
   position: fixed;
@@ -24,8 +40,8 @@ body::before {
     radial-gradient(circle at 70% 70%, #ff4500, transparent 60%);
   filter: blur(120px);
   opacity: 0.4;
-  animation: moveBg 20s infinite alternate;
-  z-index: -1;
+  z-index: -2;
+  animation: moveBg 30s infinite alternate;
 }
 
 @keyframes moveBg {
@@ -40,159 +56,228 @@ body::before {
   }
 }
 
-header {
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Navigation bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 20px 40px;
+  background: rgba(15, 15, 23, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 10;
+  justify-content: space-between;
 }
 
 .logo {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .logo img {
   height: 40px;
-  margin-right: 12px;
+  margin-right: 10px;
 }
 
 .logo h1 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 600;
+  color: var(--text-primary);
 }
 
-main {
-  padding: 80px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  min-height: calc(100vh - 60px);
-  justify-content: center;
+nav a {
+  margin-left: 24px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-decoration: none;
 }
 
+nav a:hover {
+  color: var(--primary);
+}
+
+/* Hero section */
 .hero {
-  max-width: 800px;
-  margin-bottom: 60px;
-  animation: fadeInUp 1.3s ease forwards;
-  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 100px; /* offset the fixed navbar height */
+  text-align: center;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero h2 {
+.hero-content h2 {
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, #c93bfc, #ef4d00);
+  background-image: linear-gradient(90deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  color: #d1d1d1;
-  margin-bottom: 40px;
+.hero-content p {
+  margin-top: 20px;
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.cta-button {
-  padding: 12px 32px;
-  background: #c93bfc;
-  background-image: linear-gradient(45deg, #b800ff, #ff4500);
+.cta {
+  margin-top: 35px;
+  padding: 14px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-image: linear-gradient(45deg, var(--primary), var(--secondary));
   border: none;
   border-radius: 30px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1rem;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   outline: none;
 }
 
-.cta-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(201, 59, 252, 0.3);
-}
-
-section.details {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.detail-card {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 30px;
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.detail-card:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+.cta:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(201, 59, 252, 0.4);
 }
 
-.detail-icon {
-  font-size: 2rem;
-  color: #c93bfc;
+/* Generic section styling */
+.section {
+  padding: 90px 0;
+  text-align: center;
 }
 
-.detail-content h3 {
+.section h3 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.section p {
+  color: var(--text-secondary);
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+}
+
+/* Services cards grid */
+.card-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 40px 25px;
+  max-width: 300px;
+  min-height: 320px;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.service-card i {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.service-card h4 {
   font-size: 1.3rem;
-  margin-bottom: 10px;
-  color: #ffffff;
+  margin-bottom: 15px;
+  color: var(--text-primary);
 }
 
-.detail-content p {
-  color: #cccccc;
+.service-card p {
   font-size: 1rem;
-  line-height: 1.6;
+  color: var(--text-secondary);
 }
 
-footer {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 20px;
+/* Contact details layout */
+.contact-details {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.contact-item i {
+  color: var(--primary);
+}
+
+.contact-item a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  color: var(--primary);
+}
+
+/* Footer */
+.footer {
+  padding: 30px 0;
   text-align: center;
   font-size: 0.9rem;
   color: #888;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .hero h2 {
-    font-size: 2.2rem;
+  .hero-content h2 {
+    font-size: 2.5rem;
   }
-  .hero p {
+  .hero-content p {
     font-size: 1rem;
   }
-  .detail-card {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
+  nav a {
+    margin-left: 16px;
   }
-  .detail-icon {
-    margin-bottom: 10px;
+  .section h3 {
+    font-size: 1.8rem;
+  }
+  .service-card {
+    max-width: 100%;
+    min-height: auto;
   }
 }
